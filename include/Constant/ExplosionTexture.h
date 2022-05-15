@@ -1,0 +1,17 @@
+#ifndef EXPLOSION_TEXTURE_H
+#define EXPLOSION_TEXTURE_H
+
+static const int TEXTURE_EXPLOSION_H = 100;
+static const int TEXTURE_EXPLOSION_W = 100;
+static const int TEXTURE_EXPLOSION_X = 0;
+static const int TEXTURE_EXPLOSION_Y = 286;
+static const int TEXTURE_EXPLOSION_COUNT = 74;
+static const int TEXTURE_EXPLOSION_OFFSET_X = 100;
+static const int TEXTURE_EXPLOSION_OFFSET_Y = 0;
+static const int TEXTURE_EXPLOSION_LINE_COUNT = 9;
+static const int TEXTURE_EXPLOSION_LINE_OFFSET_X = 0;
+static const int TEXTURE_EXPLOSION_LINE_OFFSET_Y = 100;
+static const int EXPLOSION_ANIMATION_LENGTH = 1000;
+
+#endif // EXPLOSION_TEXTURE_H
+
