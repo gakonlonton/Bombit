@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Bomb IT" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Bomb IT" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Bomb IT" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="../../../../Code Lib/SDL2_image-2.0.5/i686-w64-mingw32/include/SDL2" />
+			<Add directory="../../../../Code Lib/SDL2-2.0.20/i686-w64-mingw32/include/SDL2" />
+			<Add directory="../../../../Code Lib/SDL2_mixer-2.0.4/i686-w64-mingw32/include/SDL2" />
+			<Add directory="../../../../Code Lib/SDL2_ttf-2.0.18/i686-w64-mingw32/include/SDL2" />
+		</Compiler>
+		<Linker>
+			<Add option="-lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer" />
+			<Add directory="../../../../Code Lib/SDL2-2.0.20/i686-w64-mingw32/lib" />
+			<Add directory="../../../../Code Lib/SDL2_image-2.0.5/i686-w64-mingw32/lib" />
+			<Add directory="../../../../Code Lib/SDL2_mixer-2.0.4/i686-w64-mingw32/lib" />
+			<Add directory="../../../../Code Lib/SDL2_ttf-2.0.18/i686-w64-mingw32/lib" />
+		</Linker>
+		<Unit filename="GameCleanup.cpp" />
+		<Unit filename="GameEvent.cpp" />
+		<Unit filename="GameInit.cpp" />
+		<Unit filename="GameLoadContent.cpp" />
+		<Unit filename="game.h" />
+		<Unit filename="include/Constant/BombTexture.h" />
+		<Unit filename="include/Constant/EnemyTexture.h" />
+		<Unit filename="include/Constant/ExplosionTexture.h" />
+		<Unit filename="include/Constant/MapObjectTexture.h" />
+		<Unit filename="include/Constant/PickupConstant.h" />
+		<Unit filename="include/Constant/PickupTexture.h" />
+		<Unit filename="include/Constant/PlayerTexture.h" />
+		<Unit filename="include/Constant/Resources.h" />
+		<Unit filename="include/Constant/ScoreConstant.h" />
+		<Unit filename="include/Constant/WindowConstant.h" />
+		<Unit filename="include/Destroyer/Destroyer.h" />
+		<Unit filename="include/Destroyer/Wall.h" />
+		<Unit filename="include/Display/Display.h" />
+		<Unit filename="include/Display/DisplayElement.h" />
+		<Unit filename="include/Display/DisplayGame.h" />
+		<Unit filename="include/Display/DisplayManager.h" />
+		<Unit filename="include/Display/DisplayUtilities.h" />
+		<Unit filename="include/Display/Loading.h" />
+		<Unit filename="include/Display/MainMenu.h" />
+		<Unit filename="include/Display/PauseDisplay.h" />
+		<Unit filename="include/Entity/Bomb.h" />
+		<Unit filename="include/Entity/DestructibleWall.h" />
+		<Unit filename="include/Entity/Enemy.h" />
+		<Unit filename="include/Entity/EnemyList.h" />
+		<Unit filename="include/Entity/Explosion.h" />
+		<Unit filename="include/Entity/MabObject.h" />
+		<Unit filename="include/Entity/Pickup.h" />
+		<Unit filename="include/Entity/Player.h" />
+		<Unit filename="include/Manager/BombManager.h" />
+		<Unit filename="include/Manager/EnemyManager.h" />
+		<Unit filename="include/Manager/ExplosionManager.h" />
+		<Unit filename="include/Manager/MapManager.h" />
+		<Unit filename="include/Manager/PickupManager.h" />
+		<Unit filename="include/Manager/PlayerManager.h" />
+		<Unit filename="include/System/FreeTimer.h" />
+		<Unit filename="include/System/KeyboardInput.h" />
+		<Unit filename="include/System/Relay.h" />
+		<Unit filename="include/System/TextRenderer.h" />
+		<Unit filename="include/System/Timer.h" />
+		<Unit filename="include/System/UltiTimer.h" />
+		<Unit filename="include_src/Destroyer/Destroyer.cpp" />
+		<Unit filename="include_src/Destroyer/Wall.cpp" />
+		<Unit filename="include_src/Display/Display.cpp" />
+		<Unit filename="include_src/Display/DisplayElement.cpp" />
+		<Unit filename="include_src/Display/DisplayGame.cpp" />
+		<Unit filename="include_src/Display/DisplayManager.cpp" />
+		<Unit filename="include_src/Display/DisplayUtilities.cpp" />
+		<Unit filename="include_src/Display/Loading.cpp" />
+		<Unit filename="include_src/Display/MainMenu.cpp" />
+		<Unit filename="include_src/Display/PauseDisplay.cpp" />
+		<Unit filename="include_src/Entity/Bomb.cpp" />
+		<Unit filename="include_src/Entity/DestructibleWall.cpp" />
+		<Unit filename="include_src/Entity/Enemy.cpp" />
+		<Unit filename="include_src/Entity/EnemyList.cpp" />
+		<Unit filename="include_src/Entity/Explosion.cpp" />
+		<Unit filename="include_src/Entity/MapObject.cpp" />
+		<Unit filename="include_src/Entity/Pickup.cpp" />
+		<Unit filename="include_src/Entity/Player.cpp" />
+		<Unit filename="include_src/Manager/BombManager.cpp" />
+		<Unit filename="include_src/Manager/EnemyManager.cpp" />
+		<Unit filename="include_src/Manager/ExplosionManager.cpp" />
+		<Unit filename="include_src/Manager/MapManager.cpp" />
+		<Unit filename="include_src/Manager/PickupManager.cpp" />
+		<Unit filename="include_src/Manager/PlayerManager.cpp" />
+		<Unit filename="include_src/System/FreeTimer.cpp" />
+		<Unit filename="include_src/System/KeyboardInput.cpp" />
+		<Unit filename="include_src/System/Relay.cpp" />
+		<Unit filename="include_src/System/TextRenderer.cpp" />
+		<Unit filename="include_src/System/Timer.cpp" />
+		<Unit filename="include_src/System/UltiTimer.cpp" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
