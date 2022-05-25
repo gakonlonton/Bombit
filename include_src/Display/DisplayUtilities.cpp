@@ -8,24 +8,45 @@
 
 using namespace std;
 
-WelcomeDisplay::WelcomeDisplay(SDL_Texture* texture, SDL_Renderer* renderer,
-                               int windowWidth, int windowHeight)
+
+SDL_Texture* load_image(string path, SDL_Renderer* renderer) {
+    SDL_Texture* new_texture = nullptr;
+    SDL_Surface* loadedSF = IMG_Load(path.c_str());
+    if(loadedSF == nullptr) {
+        cout << "Unable to load image " << path << " SDL_image: Error: "
+                 << IMG_GetError() << "\n";
+        return false;
+    }
+    else {
+        new_texture = SDL_CreateTextureFromSurface(renderer, loadedSF);
+        SDL_FreeSurface(loadedSF);
+        if(new_texture == nullptr) {
+            cout << "Unable to create texture from " << path << " SDL: Error: "
+                 << SDL_GetError() << "\n";
+        }
+    }
+    return new_texture;
+}
+
+WelcomeDisplay::WelcomeDisplay(SDL_Texture* texture, SDL_Renderer* renderer, int windowWidth, int windowHeight)
     : Display(),
       d_texture(texture), d_renderer(renderer),
       d_pressedNext(false), d_pressedPrevious(false),
       d_windowWidth(windowWidth), d_windowHeight(windowHeight) {
-
-
 
     string path_font = RESOURCE_BASE + RESOURCE_FONT;
     TextRenderer text_renderer(path_font, 54);
     SDL_Color color = {255, 255, 255, 0};
     SDL_Rect SrcR = {0, 0, 0, 0};
     SDL_Rect DestR = {0, 0, 0, 0};
-
     SDL_Texture* image;
 
-    image = text_renderer.RenderText("Welcome to Phi Hung's BombIT", color, renderer);
+    image = load_image("resources\\menu.png", renderer);
+    d_textures.push_back(image);
+    d_textures_draw_src.push_back(SrcR);
+    d_textures_draw_dest.push_back(DestR);
+
+    image = text_renderer.RenderText("BOMBIT", color, renderer);
     SDL_QueryTexture(image, NULL, NULL, &(SrcR.w), &(SrcR.h));
     DestR.x = windowWidth/2 -  SrcR.w/2;
     DestR.y = windowHeight/2 - SrcR.h;
@@ -85,26 +106,13 @@ void WelcomeDisplay::Update() {
 }
 
 void WelcomeDisplay::Draw(SDL_Renderer* renderer) const {
-    for(unsigned int i = 0; i < (int) d_textures.size(); i++) {
-        SDL_RenderCopy(renderer, d_textures[i], &d_textures_draw_src[i], &d_textures_draw_dest[i]);
-    }
-}
-
-SDL_Texture* load_image(string path, SDL_Renderer* renderer) {
-    SDL_Texture* new_texture = nullptr;
-    SDL_Surface* loadedSF = IMG_Load(path.c_str());
-    if(loadedSF == nullptr) {
-        cout << "Unable to load image " << path << " SDL_image: Error: "
-                 << IMG_GetError() << "\n";
-        return false;
-    }
-    else {
-        new_texture = SDL_CreateTextureFromSurface(renderer, loadedSF);
-        SDL_FreeSurface(loadedSF);
-        if(new_texture == nullptr) {
-            cout << "Unable to create texture from " << path << " SDL: Error: "
-                 << SDL_GetError() << "\n";
+    for(int i = 0; i < (int) d_textures.size(); i++) {
+        if(i == 0) {
+            SDL_RenderCopy(renderer, d_textures[i], NULL, NULL);
+            SDL_RenderPresent(renderer);
         }
+        else SDL_RenderCopy(renderer, d_textures[i], &d_textures_draw_src[i], &d_textures_draw_dest[i]);
+
     }
-    return new_texture;
+
 }

@@ -411,14 +411,14 @@
 	"begin_code.h"
 	"close_code.h"
 
-1650185500 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\main.cpp
+1653400199 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\main.cpp
 	<bits/stdc++.h>
 	"game.h"
 	"include/Constant/WindowConstant.h"
 
 1649147717 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\constant\windowconstant.h
 
-1650185701 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\gameloadcontent.cpp
+1653401002 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\gameloadcontent.cpp
 	<bits/stdc++.h>
 	"game.h"
 	"SDL_image.h"
@@ -431,7 +431,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1652438477 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\constant\resources.h
+1653390128 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\constant\resources.h
 	<bits/stdc++.h>
 
 1641928952 d:\coding\code lib\sdl2_ttf-2.0.18\i686-w64-mingw32\include\sdl2\sdl_ttf.h
@@ -442,7 +442,7 @@
 1649153214 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\gameevent.cpp
 	"game.h"
 
-1649155791 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\gameinit.cpp
+1652800619 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\gameinit.cpp
 	<bits/stdc++.h>
 	"game.h"
 
@@ -461,7 +461,7 @@
 	<SDL.h>
 	<SDL_ttf.h>
 
-1650187981 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\display\displayutilities.cpp
+1653401284 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\display\displayutilities.cpp
 	<bits/stdc++.h>
 	<SDL.h>
 	"SDL_image.h"
@@ -476,22 +476,24 @@
 	"SDL_image.h"
 	<SDL.h>
 
-1650098279 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\display\mainmenu.h
+1652783697 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\display\mainmenu.h
 	"Display.h"
 
-1650188998 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\display\mainmenu.cpp
+1653388474 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\display\mainmenu.cpp
 	"../../include/Display/MainMenu.h"
 	"../../include/System/TextRenderer.h"
 	"../../include/Constant/Resources.h"
 	"../../include/Display/Loading.h"
+	"../../include/Display/PlayersNumber.h"
+	<bits/stdc++.h>
 
-1650101850 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\display\loading.h
+1652782905 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\display\loading.h
 	<bits/stdc++.h>
 	"Display.h"
 	"../System/FreeTimer.h"
 	<SDL.h>
 
-1650186314 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\display\displaymanager.cpp
+1653400234 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\display\displaymanager.cpp
 	"../../include/Display/DisplayManager.h"
 	"../../include/Display/DisplayUtilities.h"
 
@@ -501,17 +503,24 @@
 
 1650100984 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\system\freetimer.h
 
-1650632461 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\display\loading.cpp
+1653390489 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\display\loading.cpp
 	"../../include/Constant/Resources.h"
 	"../../include/Display/Loading.h"
 	"../../include/System/TextRenderer.h"
 	"../../include/Display/DisplayGame.h"
 	<bits/stdc++.h>
 
-1651672481 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\display\displaygame.cpp
+1652788212 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\display\displaygame.cpp
 	"../../include/Display/DisplayGame.h"
 	"../../include/Display/PauseDisplay.h"
 	"../../include/System/Timer.h"
+	"../../include/System/Relay.h"
+	"../../include/Manager/MapManager.h"
+	"../../include/Manager/BombManager.h"
+	"../../include/Manager/ExplosionManager.h"
+	"../../include/Manager/PlayerManager.h"
+	"../../include/Manager/EnemyManager.h"
+	"../../include/Manager/PickupManager.h"
 	"../../include/Constant/Resources.h"
 	"../../include/Constant/WindowConstant.h"
 	<bits/stdc++.h>
@@ -551,7 +560,7 @@
 
 1651672788 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\system\relay.h
 
-1652440373 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\manager\playermanager.h
+1652784495 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\manager\playermanager.h
 	<SDL.h>
 	<vector>
 	"../Display/DisplayElement.h"
@@ -560,13 +569,13 @@
 	"../System/Relay.h"
 	"SDL_mixer.h"
 
-1652014845 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\entity\player.h
+1653389760 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\entity\player.h
 	<SDL.h>
 	"../System/Relay.h"
 	"../System/KeyboardInput.h"
 	"../System/UltiTimer.h"
 
-1651672340 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\display\displaygame.h
+1652782734 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\display\displaygame.h
 	"../../include/Display/Display.h"
 	"DisplayElement.h"
 	"../System/Relay.h"
@@ -585,7 +594,7 @@
 	"../System/UltiTimer.h"
 	"Player.h"
 
-1652440254 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\manager\playermanager.cpp
+1652787891 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\manager\playermanager.cpp
 	"../../include/Manager/PlayerManager.h"
 	"../../include/Destroyer/Destroyer.h"
 	"../../include/Constant/ScoreConstant.h"
@@ -634,15 +643,15 @@
 	"../../include/Entity/MabObject.h"
 	"../../include/Constant/MapObjectTexture.h"
 
-1652437114 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\entity\bomb.cpp
+1652786018 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\entity\bomb.cpp
 	"../../include/Entity/Bomb.h"
 	"../../include/Constant/BombTexture.h"
 
-1652430473 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\entity\bomb.h
+1652785983 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\entity\bomb.h
 	<SDL.h>
 	"../System/UltiTimer.h"
 
-1652437101 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\constant\bombtexture.h
+1653322010 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\constant\bombtexture.h
 
 1652437492 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\entity\explosion.cpp
 	"../../include/Entity/Explosion.h"
@@ -660,7 +669,7 @@
 	"../../include/Manager/PlayerManager.h"
 	<bits/stdc++.h>
 
-1652438273 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\entity\enemylist.cpp
+1653321898 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\entity\enemylist.cpp
 	<bits/stdc++.h>
 	"../../include/Entity/EnemyList.h"
 	"../../include/Manager/MapManager.h"
@@ -677,7 +686,7 @@
 
 1652436424 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\constant\enemytexture.h
 
-1652438336 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\entity\player.cpp
+1653321859 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\entity\player.cpp
 	"../../include/Entity/Player.h"
 	"../../include/Manager/MapManager.h"
 	"../../include/Manager/BombManager.h"
@@ -686,7 +695,7 @@
 	"../../include/Entity/Pickup.h"
 	<iostream>
 
-1652430590 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\manager\bombmanager.h
+1652785838 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\manager\bombmanager.h
 	<list>
 	<SDL_mixer.h>
 	"../Display/DisplayElement.h"
@@ -709,7 +718,7 @@
 	"../Display/DisplayElement.h"
 	"../Entity/Explosion.h"
 
-1652438382 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\manager\enemymanager.cpp
+1653319248 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\manager\enemymanager.cpp
 	<fstream>
 	<iostream>
 	"../../include/Manager/EnemyManager.h"
@@ -727,7 +736,7 @@
 1652438506 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\manager\pickupmanager.cpp
 	"../../include/Manager/PickupManager.h"
 
-1652438838 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\manager\bombmanager.cpp
+1652785896 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\manager\bombmanager.cpp
 	"../../include/Manager/BombManager.h"
 	"../../include/Manager/PlayerManager.h"
 	"../../include/Constant/Resources.h"
@@ -737,7 +746,7 @@
 	"../../include/Constant/ExplosionTexture.h"
 	"../../include/Constant/BombTexture.h"
 
-1652439054 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\manager\mapmanager.cpp
+1652788069 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\manager\mapmanager.cpp
 	<bits/stdc++.h>
 	"../../include/Manager/MapManager.h"
 	"../../include/Constant/MapObjectTexture.h"
@@ -747,4 +756,13 @@
 	"../../include/Entity/DestructibleWall.h"
 
 1652432422 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\constant\pickupconstant.h
+
+1652784944 d:\coding\university\int2215 1\[project] - bomb it\bomb it\include\display\playersnumber.h
+	"Display.h"
+	<vector>
+
+1652785009 source:d:\coding\university\int2215 1\[project] - bomb it\bomb it\include_src\display\playersnumber.cpp
+	"../../include/Display/PlayersNumber.h"
+	"../../include/System/TextRenderer.h"
+	"../../include/Constant/Resources.h"
 

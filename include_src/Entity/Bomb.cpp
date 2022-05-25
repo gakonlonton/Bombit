@@ -1,9 +1,9 @@
 #include "../../include/Entity/Bomb.h"
 #include "../../include/Constant/BombTexture.h"
 
-Bomb::Bomb(int fuse_duration, SDL_Texture* texture, int x, int y, int bomb_size, double intensity, int damage)
+Bomb::Bomb(int fuse_duration, SDL_Texture* texture, int x, int y, int bomb_size, int player_id, double intensity, int damage)
     :   m_timer(), m_fuse_duration(fuse_duration), m_texture(texture), m_explode(false), m_x(x), m_y(y),
-        m_draw_size(bomb_size), m_intensity(intensity), m_phase_number(0), m_damage(damage) { }
+        m_draw_size(bomb_size), m_player_id(player_id), m_intensity(intensity), m_phase_number(0), m_damage(damage) { }
 
 void Bomb::Update(void) {
     if(m_timer.GetTimeElapsed() > m_fuse_duration) m_explode = true;

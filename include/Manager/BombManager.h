@@ -18,7 +18,7 @@ class BombManager : public DisplayElement {
         BombManager& operator=(const BombManager&) = delete;
 
         void AddBomb(Bomb *bomb);
-        void MakeBomb(int fuse_duration, int x, int y, double intensity = 1.0, int damage = 25);
+        void MakeBomb(int fuse_duration, int x, int y, int player_id, double intensity = 1.0, int damage = 25);
         void Update();
         void Draw(SDL_Renderer* renderer) const;
 

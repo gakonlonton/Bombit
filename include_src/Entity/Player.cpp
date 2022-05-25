@@ -17,7 +17,7 @@ const int MIN_BOMBS = 1;
 const int MAX_BOMB_DAMAGE = 100;
 const int MIN_BOMB_DAMAGE = 25;
 
-Player::Player(SDL_Texture* tex, int tile_size, Relay *relay, int val_x, int val_y)
+Player::Player(SDL_Texture* tex, int tile_size, Relay *relay, int player_id, int val_x, int val_y)
       : m_keyboard_input(KeyboardInput::Instance()) {
 
     this -> m_x = val_x*tile_size;
@@ -30,15 +30,15 @@ Player::Player(SDL_Texture* tex, int tile_size, Relay *relay, int val_x, int val
     this -> m_tile_size = tile_size;
 
     m_timer.ResetTimer();
-    m_player_size_w = TEXTURE_PLAYER_SIZE_W*tile_size/32;
-    m_player_size_h = TEXTURE_PLAYER_SIZE_H*tile_size/32;
-    m_move_speed = m_move_speed*m_tile_size/32;
+    m_player_size_w = TEXTURE_PLAYER_SIZE_W*tile_size/27;
+    m_player_size_h = TEXTURE_PLAYER_SIZE_H*tile_size/27;
+    m_move_speed = m_move_speed*m_tile_size/18;
     m_relay = relay;
+    m_player_id = player_id;
 }
 
 bool Player::Touch(int pick_up_x, int pick_up_y) {
-    if(pick_up_x >= m_x and pick_up_y >= m_y and
-       pick_up_x <= m_x + m_player_size_w and pick_up_y <= m_y + m_player_size_h) {
+    if(pick_up_x >= m_x and pick_up_y >= m_y and pick_up_x <= m_x + m_player_size_w and pick_up_y <= m_y + m_player_size_h) {
         return true;
     }
     return false;
@@ -149,7 +149,7 @@ void Player::Update(void) {
 
 void Player::PlaceBomb(void) {
     if(m_bomb_temp_num < m_bomb_num) {
-		m_relay->GetBombManager()->MakeBomb(5000, m_x + m_player_size_w/2, m_y + m_player_size_h/2, m_bomb_intensity, m_bomb_damage);
+		m_relay->GetBombManager()->MakeBomb(5000, m_x + m_player_size_w/2, m_y + m_player_size_h/2, m_player_id, m_bomb_intensity, m_bomb_damage);
         m_bomb_temp_num++;
     }
 }
@@ -165,7 +165,7 @@ void Player::Draw(SDL_Renderer *renderer) {
     SrcR.y = TEXTURE_PLAYER_Y;
     SrcR.w = TEXTURE_PLAYER_SOURCE_W;
     SrcR.h = TEXTURE_PLAYER_SOURCE_H;
-    int source_texture_x = TEXTURE_PLAYER_MAIN_SOURCE_OFFSET;
+    int source_texture_x = m_player_id * TEXTURE_PLAYER_MAIN_SOURCE_OFFSET + TEXTURE_PLAYER_MINI_SOURCE_OFFSET;
 
     switch(m_direction) {
         case UP:
@@ -311,6 +311,10 @@ void Player::SetAlive(int a) {
 
 int Player::GetLives() const {
     return m_lives;
+}
+
+int Player::GetID() const {
+    return m_player_id;
 }
 
 void Player::SetLives(int l) {

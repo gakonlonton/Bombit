@@ -10,9 +10,8 @@
 using namespace std;
 
 BombManager::BombManager(SDL_Texture* texture, int tile_size, Relay* relay)
-    : DisplayElement(texture),
-      m_bomb_size(tile_size*BOMB_SIZE_TO_TILE), m_tile_size(tile_size), m_relay(relay) {
-    string path_music = RESOURCE_BASE + RESOURCES_EXPLOSION_LOAD;
+    : DisplayElement(texture), m_bomb_size(tile_size*BOMB_SIZE_TO_TILE), m_tile_size(tile_size), m_relay(relay) {
+    string path_music = RESOURCE_BASE + RESOURCE_EXPLOSION_LOAD;
     m_bomb_sound_effect = Mix_LoadWAV(path_music.c_str());
 }
 
@@ -27,8 +26,8 @@ void BombManager::AddBomb(Bomb *bomb) {
     m_bombs.push_back(bomb);
 }
 
-void BombManager::MakeBomb(int fuse_duration, int x, int y, double intensity, int damage) {
-    Bomb* b = new Bomb(fuse_duration, d_texture, x, y, m_bomb_size, intensity, damage);
+void BombManager::MakeBomb(int fuse_duration, int x, int y, int player_id, double intensity, int damage) {
+    Bomb* b = new Bomb(fuse_duration, d_texture, x, y, m_bomb_size, player_id, intensity, damage);
     AddBomb(b);
 }
 
@@ -41,6 +40,7 @@ void BombManager::Update(void) {
             WallDestroyer wd(m_relay->GetMap(), (*i)->GetX(), (*i)->GetY(), m_tile_size, (*i)->GetIntensity(), (*i)->GetDamage());
             m_relay->GetEnemyManager()->KillEnemies((*i)->GetX(), (*i)->GetY(), (*i)->GetIntensity());
             m_relay->GetPlayerManager()->KillPlayer((*i)->GetX(), (*i)->GetY(), (*i)->GetIntensity());
+            m_relay->GetPlayerManager()->GetPlayerById((*i)->GetPlayerId())->DecreaseTempBombNumber();
             delete (*i);
             i = m_bombs.erase(i);
         }

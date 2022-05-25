@@ -10,7 +10,7 @@ using namespace std;
 
 class Loading : public Display {
     public:
-        Loading(SDL_Texture* texture, SDL_Renderer* renderer, int windowWidth, int windowHeight);
+        Loading(SDL_Texture* texture, SDL_Renderer* renderer, int windowWidth, int windowHeight, int players_number, int max_level);
 
         ~Loading();
         Loading(const Loading& other) = delete;
@@ -33,7 +33,8 @@ class Loading : public Display {
         SDL_Renderer* d_renderer;
         vector<SDL_Texture*> d_textures;
         vector<SDL_Rect> d_textures_draw_src, d_textures_draw_dest;
-        int d_windowWidth, d_windowHeight;
+        int d_windowWidth, d_windowHeight, d_current_level, m_players_number;
+        const int m_max_level;
         FreeTimer m_timer;
         bool m_game_over;
         Mix_Music* m_music;

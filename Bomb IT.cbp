@@ -67,6 +67,7 @@
 		<Unit filename="include/Display/Loading.h" />
 		<Unit filename="include/Display/MainMenu.h" />
 		<Unit filename="include/Display/PauseDisplay.h" />
+		<Unit filename="include/Display/PlayersNumber.h" />
 		<Unit filename="include/Entity/Bomb.h" />
 		<Unit filename="include/Entity/DestructibleWall.h" />
 		<Unit filename="include/Entity/Enemy.h" />
@@ -97,6 +98,7 @@
 		<Unit filename="include_src/Display/Loading.cpp" />
 		<Unit filename="include_src/Display/MainMenu.cpp" />
 		<Unit filename="include_src/Display/PauseDisplay.cpp" />
+		<Unit filename="include_src/Display/PlayersNumber.cpp" />
 		<Unit filename="include_src/Entity/Bomb.cpp" />
 		<Unit filename="include_src/Entity/DestructibleWall.cpp" />
 		<Unit filename="include_src/Entity/Enemy.cpp" />

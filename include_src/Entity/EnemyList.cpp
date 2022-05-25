@@ -10,10 +10,10 @@ using namespace std;
 
 EnemyOne::EnemyOne(SDL_Texture* tex, int tile_size, int val_x, int val_y) : Enemy(tex, tile_size, val_x, val_y) {
     m_speed = 100;
-    m_move_speed = m_move_speed *m_tile_size/32;
+    m_move_speed = m_move_speed*m_tile_size/18;
     m_rotation_const = TEXTURE_ENEMY_ONE_COUNT;
-    m_enemy_size_w = TEXTURE_ENEMY_ONE_SIZE_W*tile_size/32;
-    m_enemy_size_h = TEXTURE_ENEMY_ONE_SIZE_H*tile_size/32;
+    m_enemy_size_w = TEXTURE_ENEMY_ONE_SIZE_W*tile_size/27;
+    m_enemy_size_h = TEXTURE_ENEMY_ONE_SIZE_H*tile_size/27;
 }
 
 void EnemyOne::Draw(SDL_Renderer *renderer) {

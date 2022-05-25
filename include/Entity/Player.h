@@ -8,7 +8,7 @@
 
 class Player {
     public:
-        Player(SDL_Texture* tex, int tile_size, Relay *relay, int val_x = 1, int val_y = 1);
+        Player(SDL_Texture* tex, int tile_size, Relay *relay, int player_id = 0, int val_x = 1, int val_y = 1);
 
         void SetX(int val);
         void SetY(int val);
@@ -71,7 +71,7 @@ class Player {
         int m_tile_size;
         Relay* m_relay;
         KeyboardInput* m_keyboard_input;
-        SDL_Keycode m_bomb_button = SDLK_KP_5;
+        SDL_Keycode m_bomb_button = SDLK_SPACE;
         SDL_Keycode m_left = SDLK_LEFT;
         SDL_Keycode m_right = SDLK_RIGHT;
         SDL_Keycode m_up = SDLK_UP;

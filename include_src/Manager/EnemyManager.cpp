@@ -15,10 +15,10 @@ EnemyManager::EnemyManager(string path_to_file, SDL_Texture* texture, int tile_s
 
     fstream fs;
     fs.open (path_to_file, fstream::in);
-    if (!fs.is_open()) exit(0);
+    if (!fs.is_open()) exit(EXIT_FAILURE);
     fs >> m_enemies_numb;
 
-    for(unsigned i = 0; i < m_enemies_numb; i++) {
+    for(int i = 0; i < m_enemies_numb; i++) {
         int type, x = 0, y = 0;
         fs >> type >> x >> y;
         switch(type) {
@@ -29,7 +29,7 @@ EnemyManager::EnemyManager(string path_to_file, SDL_Texture* texture, int tile_s
                 MakeEnemyTwo(x, y);
                 break;
             case 3:
-                MakeEnemyThree(x, y);
+                // MakeEnemyThree(x, y);
                 break;
             default:
                 break;

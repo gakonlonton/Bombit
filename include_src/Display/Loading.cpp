@@ -7,17 +7,22 @@
 
 using namespace std;
 
-Loading::Loading(SDL_Texture* texture, SDL_Renderer* renderer, int windowWidth, int windowHeight)
+Loading::Loading(SDL_Texture* texture, SDL_Renderer* renderer, int windowWidth, int windowHeight, int players_number, int max_level)
     : Display(),
       d_texture(texture),
       d_renderer(renderer),
       d_windowWidth(windowWidth),
       d_windowHeight(windowHeight),
       m_timer(),
+      m_players_number(players_number),
+      d_current_level(1),
+      m_max_level(max_level),
       m_game_over(false),
       m_music(nullptr),
       m_musicWait(RESOURCE_MUSIC_LOAD_TIME) {
-
+    stringstream sstm;
+    sstm << "STAGE " << d_current_level;
+    MakeTexture(sstm.str());
     string path_music = RESOURCE_BASE + RESOURCE_MUSIC_LOAD;
     m_music = Mix_LoadMUS(path_music.c_str());
 }
@@ -26,7 +31,6 @@ Loading::~Loading() {
     for(auto i = d_textures.begin(); i != d_textures.end(); i++) {
         SDL_DestroyTexture(*i);
     }
-
     d_textures.clear();
     d_textures_draw_src.clear();
     d_textures_draw_dest.clear();
@@ -48,8 +52,16 @@ void Loading::Enter(int mode) {
         m_game_over = true;
     }
     else {
-        MakeTexture("GAME COMPLETED");
-        m_game_over = true;
+        d_current_level = mode;
+        if(d_current_level <= RESOURCE_LEVEL_COUNT) {
+            stringstream sstm;
+            sstm << "STAGE " << d_current_level;
+            MakeTexture(sstm.str());
+        }
+        else {
+            MakeTexture("GAME COMPLETED");
+            m_game_over = true;
+        }
     }
 }
 
@@ -77,7 +89,7 @@ void Loading::DestroyTextures() {
 
 void Loading::Update() {
     if(d_nextDisplay == nullptr && m_game_over == false) {
-        d_nextDisplay = new GameDisplay(d_texture, d_renderer, d_windowWidth, d_windowHeight);
+        d_nextDisplay = new GameDisplay(d_texture, d_renderer, d_windowWidth, d_windowHeight, m_players_number, d_current_level);
     }
     else if(m_timer.GetTimeElapsed() > m_musicWait)  {
         if(m_game_over) {
@@ -97,7 +109,7 @@ void Loading::MakeTexture(string text) {
     string path_font = RESOURCE_BASE + RESOURCE_FONT;
     TextRenderer text_renderer(path_font, 96);
 
-    SDL_Color color = {0, 0, 200, 255};
+    SDL_Color color = {255, 255, 255, 0};
     SDL_Rect SrcR = {0, 0, 0, 0};
     SDL_Rect DestR = {0, 0, 0, 0};
     SDL_Texture* image;

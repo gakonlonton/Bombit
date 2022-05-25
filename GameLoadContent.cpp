@@ -7,11 +7,10 @@
 using namespace std;
 
 bool Game::loadImage(void) {
-    string path = RESOURCE_BASE + RESOURCE_TEXTURE;
+    string path = "resources\\menu.png";
     SDL_Surface* loadedSF = IMG_Load(path.c_str());
     if(loadedSF == nullptr) {
-        cout << "Unable to load image " << path << " SDL_image: Error: "
-                 << IMG_GetError() << "\n";
+        cout << "Unable to load image " << path << " SDL_image: Error: " << IMG_GetError() << "\n";
         return false;
     }
     else {
@@ -23,8 +22,7 @@ bool Game::loadImage(void) {
                  << SDL_GetError() << "\n";
             return false;
         }
-        display_manager = new DisplayManager(texture, renderer, &RunningGame,
-                                            windowWidth, windowHeight);
+        display_manager = new DisplayManager(texture, renderer, &RunningGame, windowWidth, windowHeight);
     }
     return true;
 }

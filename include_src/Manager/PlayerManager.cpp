@@ -7,20 +7,30 @@
 
 using namespace std;
 
-PlayerManager::PlayerManager(string path_to_file, SDL_Texture* texture, int tile_size, Relay *relay)
+PlayerManager::PlayerManager(string path_to_file, SDL_Texture* texture, int tile_size, Relay *relay, int numb_of_players_to_load)
     : DisplayElement(texture) {
+    m_numb_of_players_to_load = numb_of_players_to_load;
     m_tile_size = tile_size;
     m_relay = relay;
     m_timer.ResetTimer();
     fstream fs;
     fs.open(path_to_file, fstream::in);
+    if(!fs.is_open()) exit(EXIT_FAILURE);
 
-    if(!fs.is_open()) exit(0);
-    int id, x = 0, y = 0;
-    fs >> id >> x >> y;
-    MakePlayer(x, y);
+    fs >> m_players_numb;
+    if(m_numb_of_players_to_load > m_players_numb) {
+        m_numb_of_players_to_load = m_players_numb;
+    }
+    else if(m_numb_of_players_to_load < 1) {
+        m_numb_of_players_to_load = 1;
+    }
+    for(int i = 0; i < m_numb_of_players_to_load; i++) {
+        int id, x = 0, y = 0;
+        fs >> id >> x >> y;
+        MakePlayer(id, x, y);
+    }
     fs.close();
-    string path_music = RESOURCE_BASE + RESOURCES_KILL_LOAD;
+    string path_music = RESOURCE_BASE + RESOURCE_KILL_LOAD;
     m_kill_sound = Mix_LoadWAV(path_music.c_str());
 }
 
@@ -31,8 +41,8 @@ PlayerManager::~PlayerManager() {
     }
 }
 
-void PlayerManager::MakePlayer(int x, int y) {
-    Player *player = new Player(d_texture, m_tile_size, m_relay, x, y);
+void PlayerManager::MakePlayer(int player_id, int x, int y) {
+    Player *player = new Player(d_texture, m_tile_size, m_relay, player_id, x, y);
     m_players.push_back(player);
 }
 
@@ -46,7 +56,7 @@ void PlayerManager::AddPlayer(Player *player) {
     m_players.push_back(player);
 }
 
-void PlayerManager::DrawScore(SDL_Renderer* renderer, int lives) const {
+void PlayerManager::DrawScore(SDL_Renderer* renderer, int player_id, int lives) const {
     SDL_Rect SrcR;
     SDL_Rect DestR;
 
@@ -56,7 +66,7 @@ void PlayerManager::DrawScore(SDL_Renderer* renderer, int lives) const {
 
     SrcR.x = lives*TEXTURE_NUMB_SOURCE_W + TEXTURE_NUMB_X;
 
-    DestR.x = 0 + 2*m_tile_size;
+    DestR.x = 0 + player_id*2*m_tile_size;
     DestR.y = 0;
     DestR.w = m_tile_size;
     DestR.h = m_tile_size;
@@ -67,7 +77,7 @@ void PlayerManager::DrawScore(SDL_Renderer* renderer, int lives) const {
 
 void PlayerManager::Draw(SDL_Renderer* renderer) const {
     for(auto i = m_players.begin(); i != m_players.end(); ++i) {
-        DrawScore(renderer, (*i)->GetLives());
+        DrawScore(renderer, (*i)->GetID(), (*i)->GetLives());
         if(((*i)->GetLives() != 0) and !((*i)->IsLevelCompleted())) (*i)->Draw(renderer);
     }
 }

@@ -8,6 +8,17 @@ bool Game::Init(void) {
         cout << "SDL_Init Error: " << SDL_GetError() << "\n";
         return false;
     }
+    // Music Init
+    int result = 0;
+    int flags = MIX_INIT_MP3;
+    if(flags != (result = Mix_Init(flags))) {
+        cout << "Could not initialize mixer " << result << "\n";
+        cout << "Mix_Init: " << Mix_GetError() << "\n";
+        return false;
+    }
+    if(Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 1024) == -1) {
+        return false;
+    }
     // Window Init
     window = SDL_CreateWindow("BOMBIT", 50, 50,
                               windowWidth, windowHeight, SDL_WINDOW_SHOWN);

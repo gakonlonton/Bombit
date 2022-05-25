@@ -2,11 +2,12 @@
 #include "../../include/System/TextRenderer.h"
 #include "../../include/Constant/Resources.h"
 #include "../../include/Display/Loading.h"
+#include "../../include/Display/PlayersNumber.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 
-MainMenu::MainMenu(SDL_Texture* texture, SDL_Renderer* renderer,
-                   int windowWidth, int windowHeight)
+MainMenu::MainMenu(SDL_Texture* texture, SDL_Renderer* renderer, int windowWidth, int windowHeight)
     : Display(),
       d_texture(texture),
       d_renderer(renderer),
@@ -16,12 +17,14 @@ MainMenu::MainMenu(SDL_Texture* texture, SDL_Renderer* renderer,
       d_buttonPressedEnter(false),
       d_windowWidth(windowWidth),
       d_windowHeight(windowHeight),
-      m_music(nullptr) {
+      m_players_number(1),
+      m_music(nullptr),
+      m_in_options(false) {
 
     string path_font = RESOURCE_BASE + RESOURCE_FONT;
     TextRenderer text_renderer(path_font, 64);
 
-    SDL_Color color = {255, 255, 255, 0};
+    SDL_Color color = {255, 255, 240, 0};
     SDL_Rect SrcR = {0, 0, 0, 0};
     SDL_Rect DestR = {0, 0, 0, 0};
     SDL_Texture* image;
@@ -31,7 +34,15 @@ MainMenu::MainMenu(SDL_Texture* texture, SDL_Renderer* renderer,
     DestR.x = windowWidth/2 -  SrcR.w/2;
     DestR.y = windowHeight/2 - SrcR.h/2 - SrcR.h;
     DestR.h = SrcR.h; DestR.w = SrcR.w;
+    d_textures.push_back(image);
+    d_textures_draw_src.push_back(SrcR);
+    d_textures_draw_dest.push_back(DestR);
 
+    image = text_renderer.RenderText("OPTIONS", color, renderer);
+    SDL_QueryTexture(image, NULL, NULL, &(SrcR.w), &(SrcR.h));
+    DestR.y += SrcR.h;
+    DestR.h = SrcR.h;
+    DestR.w = SrcR.w;
     d_textures.push_back(image);
     d_textures_draw_src.push_back(SrcR);
     d_textures_draw_dest.push_back(DestR);
@@ -50,6 +61,7 @@ MainMenu::MainMenu(SDL_Texture* texture, SDL_Renderer* renderer,
 
     string path_music = RESOURCE_BASE + RESOURCE_MUSIC_MENU;
     m_music = Mix_LoadMUS(path_music.c_str());
+    Mix_VolumeMusic(10);
 }
 
 #define corner d_textures.size()
@@ -71,6 +83,11 @@ void MainMenu::Init(void) {
 }
 
 void MainMenu::Enter(int mode) {
+    if(!m_in_options) Mix_PlayMusic(m_music, -1);
+    else {
+        m_in_options = false;
+        m_players_number = mode;
+    }
 
     d_leaveNext = false;
     d_leavePrevious = false;
@@ -81,7 +98,9 @@ void MainMenu::Enter(int mode) {
 }
 
 void MainMenu::Leave(void) {
-    Mix_HaltMusic();
+    if(!m_in_options) {
+        Mix_HaltMusic();
+    }
 }
 
 int MainMenu::Destroy(void) {
@@ -113,11 +132,17 @@ void MainMenu::Update(void) {
     if(d_buttonPressedEnter and d_keyboardInput->IsKeyOn(SDLK_RETURN)) {
         switch(d_arrow) {
             case 0:
-                d_nextDisplay = new Loading(d_texture, d_renderer, d_windowWidth, d_windowHeight);
+                d_nextDisplay = new Loading(d_texture, d_renderer, d_windowWidth, d_windowHeight, m_players_number, RESOURCE_LEVEL_COUNT);
                 d_leaveNext = true;
                 break;
             case 1:
+                d_nextDisplay = new PlayersNumber(d_renderer, d_windowWidth, d_windowHeight);
+                m_in_options = true;
+                d_leaveNext = true;
+                break;
+            case 2:
                 d_leavePrevious = true;
+                exit(0);
                 break;
             default:
                 break;

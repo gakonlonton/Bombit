@@ -5,8 +5,7 @@
 
 class MainMenu : public Display {
     public:
-        MainMenu(SDL_Texture* texture, SDL_Renderer* renderer,
-                 int windowWidth, int windowHeight);
+        MainMenu(SDL_Texture* texture, SDL_Renderer* renderer, int windowWidth, int windowHeight);
 
         ~MainMenu();
         MainMenu(const MainMenu& other) = delete;
@@ -27,8 +26,8 @@ class MainMenu : public Display {
         vector<SDL_Rect> d_textures_draw_src, d_textures_draw_dest;
         SDL_Texture* d_arrowTexture;
         int d_arrowHeight, d_arrowWidth, d_arrow;
-        bool d_buttonPressedDown, d_buttonPressedUp, d_buttonPressedEnter;
-        int d_windowWidth, d_windowHeight;
+        bool d_buttonPressedDown, d_buttonPressedUp, d_buttonPressedEnter, m_in_options;
+        int d_windowWidth, d_windowHeight, m_players_number;
         Mix_Music* m_music;
 
 };

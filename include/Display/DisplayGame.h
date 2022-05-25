@@ -12,7 +12,7 @@ using namespace std;
 class GameDisplay : public Display {
     public:
         GameDisplay(SDL_Texture* texture, SDL_Renderer* renderer,
-                    int windowWidth, int windowHeight, int number_of_screen_elements = 6);
+                    int windowWidth, int windowHeight, int players_number, int current_level, int number_of_screen_elements = 6);
 
         ~GameDisplay();
         GameDisplay(const GameDisplay& other) = delete;
@@ -32,7 +32,7 @@ class GameDisplay : public Display {
         Relay* m_relay;
         SDL_Texture* d_texture;
         SDL_Renderer* d_renderer;
-        int d_windowWidth, d_windowHeight;
+        int d_windowWidth, d_windowHeight, m_players_number, d_current_level;
         bool d_level_completed, m_play_music = true;
         Mix_Music* m_music;
 };

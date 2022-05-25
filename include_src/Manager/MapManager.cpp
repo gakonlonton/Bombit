@@ -10,15 +10,16 @@ using namespace std;
 
 Map::Map(string path_to_file, SDL_Texture* texture, int tile_size, Relay* relay) : DisplayElement(texture),
       m_tile_size(tile_size), m_relay(relay), m_wall_count(0) {
+
     fstream fs;
-    fs.open (path_to_file, fstream::in);
-    if (!fs.is_open()) exit(0);
+    fs.open(path_to_file);
+    if (!fs.is_open()) exit(EXIT_FAILURE);
+
     fs >> m_height >> m_width;
     m_layout.resize(m_height);
     for(int i = 0; i < m_height; i++) {
         m_layout[i].resize(m_width);
     }
-
     srand(time(nullptr));
     for(int i = 0; i < m_height; i++) {
         for(int j = 0; j < m_width; j++) {
