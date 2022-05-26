@@ -12,8 +12,8 @@ EnemyOne::EnemyOne(SDL_Texture* tex, int tile_size, int val_x, int val_y) : Enem
     m_speed = 100;
     m_move_speed = m_move_speed*m_tile_size/18;
     m_rotation_const = TEXTURE_ENEMY_ONE_COUNT;
-    m_enemy_size_w = TEXTURE_ENEMY_ONE_SIZE_W*tile_size/27;
-    m_enemy_size_h = TEXTURE_ENEMY_ONE_SIZE_H*tile_size/27;
+    m_enemy_size_w = TEXTURE_ENEMY_ONE_SIZE_W*tile_size/29;
+    m_enemy_size_h = TEXTURE_ENEMY_ONE_SIZE_H*tile_size/29;
 }
 
 void EnemyOne::Draw(SDL_Renderer *renderer) {
@@ -39,8 +39,8 @@ EnemyTwo::EnemyTwo(SDL_Texture* tex, int tile_size, int val_x, int val_y) : Enem
     m_speed = 74;
     m_move_speed = m_move_speed * m_tile_size/18;
     m_rotation_const = TEXTURE_ENEMY_TWO_COUNT;
-    m_enemy_size_w = TEXTURE_ENEMY_TWO_SIZE_W * tile_size/27;
-    m_enemy_size_h = TEXTURE_ENEMY_TWO_SIZE_H * tile_size/27;
+    m_enemy_size_w = TEXTURE_ENEMY_TWO_SIZE_W * tile_size/29;
+    m_enemy_size_h = TEXTURE_ENEMY_TWO_SIZE_H * tile_size/29;
 }
 
 void EnemyTwo::Draw(SDL_Renderer *renderer) {

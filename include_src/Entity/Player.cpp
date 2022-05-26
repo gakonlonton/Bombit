@@ -30,8 +30,8 @@ Player::Player(SDL_Texture* tex, int tile_size, Relay *relay, int player_id, int
     this -> m_tile_size = tile_size;
 
     m_timer.ResetTimer();
-    m_player_size_w = TEXTURE_PLAYER_SIZE_W*tile_size/27;
-    m_player_size_h = TEXTURE_PLAYER_SIZE_H*tile_size/27;
+    m_player_size_w = TEXTURE_PLAYER_SIZE_W*tile_size/29;
+    m_player_size_h = TEXTURE_PLAYER_SIZE_H*tile_size/29;
     m_move_speed = m_move_speed*m_tile_size/18;
     m_relay = relay;
     m_player_id = player_id;
