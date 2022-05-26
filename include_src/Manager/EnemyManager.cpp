@@ -30,6 +30,7 @@ EnemyManager::EnemyManager(string path_to_file, SDL_Texture* texture, int tile_s
                 break;
             case 3:
                 // MakeEnemyThree(x, y);
+                MakeEnemyTwo(x, y);
                 break;
             default:
                 break;

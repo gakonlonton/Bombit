@@ -2,6 +2,8 @@
 #include "../../include/Display/Loading.h"
 #include "../../include/System/TextRenderer.h"
 #include "../../include/Display/DisplayGame.h"
+#include <SDL.h>
+#include "SDL_image.h"
 
 #include <bits/stdc++.h>
 
@@ -101,7 +103,10 @@ void Loading::Update() {
 
 void Loading::Draw(SDL_Renderer* renderer) const {
     for(unsigned int i = 0; i < (int) d_textures.size(); i++) {
-        SDL_RenderCopy(renderer, d_textures[i], &d_textures_draw_src[i], &d_textures_draw_dest[i]);
+        if(i == 0) {
+            SDL_RenderCopy(renderer, d_textures[i], NULL, NULL);
+        }
+        else SDL_RenderCopy(renderer, d_textures[i], &d_textures_draw_src[i], &d_textures_draw_dest[i]);
     }
 }
 
@@ -109,10 +114,18 @@ void Loading::MakeTexture(string text) {
     string path_font = RESOURCE_BASE + RESOURCE_FONT;
     TextRenderer text_renderer(path_font, 96);
 
-    SDL_Color color = {255, 255, 255, 0};
+    SDL_Color color = {255, 0, 0, 255};
     SDL_Rect SrcR = {0, 0, 0, 0};
     SDL_Rect DestR = {0, 0, 0, 0};
+
     SDL_Texture* image;
+    string img_path = "resources\\loading.png";
+    SDL_Surface* loadedSF = IMG_Load(img_path.c_str());
+    image = SDL_CreateTextureFromSurface(d_renderer, loadedSF);
+    SDL_FreeSurface(loadedSF);
+    d_textures.push_back(image);
+    d_textures_draw_src.push_back(SrcR);
+    d_textures_draw_dest.push_back(DestR);
 
     image = text_renderer.RenderText(text, color, d_renderer);
     SDL_QueryTexture(image, NULL, NULL, &(SrcR.w), &(SrcR.h));

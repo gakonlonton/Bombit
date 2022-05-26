@@ -5,26 +5,15 @@
 #include "../../include/Constant/Resources.h"
 #include "../../include/System/TextRenderer.h"
 #include "../../include/Display/MainMenu.h"
+#include "../../include/Display/Loading.h"
 
 using namespace std;
-
 
 SDL_Texture* load_image(string path, SDL_Renderer* renderer) {
     SDL_Texture* new_texture = nullptr;
     SDL_Surface* loadedSF = IMG_Load(path.c_str());
-    if(loadedSF == nullptr) {
-        cout << "Unable to load image " << path << " SDL_image: Error: "
-                 << IMG_GetError() << "\n";
-        return false;
-    }
-    else {
-        new_texture = SDL_CreateTextureFromSurface(renderer, loadedSF);
-        SDL_FreeSurface(loadedSF);
-        if(new_texture == nullptr) {
-            cout << "Unable to create texture from " << path << " SDL: Error: "
-                 << SDL_GetError() << "\n";
-        }
-    }
+    new_texture = SDL_CreateTextureFromSurface(renderer, loadedSF);
+    SDL_FreeSurface(loadedSF);
     return new_texture;
 }
 
@@ -36,7 +25,7 @@ WelcomeDisplay::WelcomeDisplay(SDL_Texture* texture, SDL_Renderer* renderer, int
 
     string path_font = RESOURCE_BASE + RESOURCE_FONT;
     TextRenderer text_renderer(path_font, 54);
-    SDL_Color color = {255, 255, 255, 0};
+    SDL_Color color = {155, 0, 255, 0};
     SDL_Rect SrcR = {0, 0, 0, 0};
     SDL_Rect DestR = {0, 0, 0, 0};
     SDL_Texture* image;
@@ -46,25 +35,11 @@ WelcomeDisplay::WelcomeDisplay(SDL_Texture* texture, SDL_Renderer* renderer, int
     d_textures_draw_src.push_back(SrcR);
     d_textures_draw_dest.push_back(DestR);
 
-    image = text_renderer.RenderText("BOMBIT", color, renderer);
-    SDL_QueryTexture(image, NULL, NULL, &(SrcR.w), &(SrcR.h));
-    DestR.x = windowWidth/2 -  SrcR.w/2;
-    DestR.y = windowHeight/2 - SrcR.h;
-    DestR.h = SrcR.h;
-    DestR.w = SrcR.w;
-    d_textures.push_back(image);
-    d_textures_draw_src.push_back(SrcR);
-    d_textures_draw_dest.push_back(DestR);
-
-    image = text_renderer.RenderText("Press ENTER to start", color, renderer);
-    SDL_QueryTexture(image, NULL, NULL, &(SrcR.w), &(SrcR.h));
-    DestR.x = DestR.x + (DestR.w - SrcR.w)/2;
-    DestR.y += SrcR.h;
-    DestR.h = SrcR.h;
-    DestR.w = SrcR.w;
-    d_textures.push_back(image);
-    d_textures_draw_src.push_back(SrcR);
-    d_textures_draw_dest.push_back(DestR);
+    Mix_Music* m_music;
+    string path_music = RESOURCE_BASE + RESOURCE_MUSIC_MENU;
+    m_music = Mix_LoadMUS(path_music.c_str());
+    Mix_VolumeMusic(10);
+    Mix_PlayMusic(m_music, -1);
 }
 
 WelcomeDisplay::~WelcomeDisplay() {
@@ -91,12 +66,12 @@ int WelcomeDisplay::Destroy() {
 }
 
 void WelcomeDisplay::Update() {
-    if(d_pressedNext && d_keyboardInput->IsKeyOn(SDLK_RETURN)) {
+    if(d_pressedNext and d_keyboardInput->IsKeyOn(SDLK_RETURN)) {
         d_pressedNext = false;
         d_nextDisplay = new MainMenu(d_texture, d_renderer, d_windowWidth, d_windowHeight);
         d_leaveNext = true;
     }
-    if(d_pressedPrevious && d_keyboardInput->IsKeyOn(SDLK_ESCAPE)) {
+    if(d_pressedPrevious and d_keyboardInput->IsKeyOn(SDLK_ESCAPE)) {
         d_pressedPrevious = false;
         d_leavePrevious = true;
     }
@@ -109,10 +84,7 @@ void WelcomeDisplay::Draw(SDL_Renderer* renderer) const {
     for(int i = 0; i < (int) d_textures.size(); i++) {
         if(i == 0) {
             SDL_RenderCopy(renderer, d_textures[i], NULL, NULL);
-            SDL_RenderPresent(renderer);
         }
         else SDL_RenderCopy(renderer, d_textures[i], &d_textures_draw_src[i], &d_textures_draw_dest[i]);
-
     }
-
 }

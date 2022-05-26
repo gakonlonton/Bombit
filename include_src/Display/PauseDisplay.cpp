@@ -18,7 +18,7 @@ PauseDisplay::PauseDisplay(SDL_Renderer* renderer,
     string path_font = RESOURCE_BASE + RESOURCE_FONT;
     TextRenderer text_renderer(path_font, 64);
 
-    SDL_Color color = {255, 255, 255, 0};
+    SDL_Color color = {131, 238, 255, 0};
     SDL_Rect SrcR = {0, 0, 0, 0};
     SDL_Rect DestR = {0, 0, 0, 0};
     SDL_Texture* image;
@@ -91,12 +91,12 @@ void PauseDisplay::Update() {
         d_arrow++;
         if(d_arrow >= (int) d_textures.size()) d_arrow = 0;
     }
-    if(d_buttonPressedUp && d_keyboardInput->IsKeyOn(SDLK_UP)) {
+    if(d_buttonPressedUp and d_keyboardInput->IsKeyOn(SDLK_UP)) {
         d_buttonPressedUp = false;
         d_arrow--;
         if(d_arrow < 0) d_arrow = (int) d_textures.size() - 1;
     }
-    if (d_buttonPressedEnter && d_keyboardInput->IsKeyOn(SDLK_RETURN)) {
+    if (d_buttonPressedEnter and d_keyboardInput->IsKeyOn(SDLK_RETURN)) {
         switch(d_arrow) {
             case 0:
                 d_quit = false;

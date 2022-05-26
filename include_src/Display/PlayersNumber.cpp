@@ -15,14 +15,14 @@ PlayersNumber::PlayersNumber(SDL_Renderer* renderer, int windowWidth, int window
       d_windowHeight(windowHeight) {
 
     string path_font = RESOURCE_BASE + RESOURCE_FONT;
-    TextRenderer text_renderer(path_font, 64);
+    TextRenderer text_renderer(path_font, 60);
 
-    SDL_Color color = {255, 0, 0, 255};
+    SDL_Color color = {131, 238, 255, 0};
     SDL_Rect SrcR = {0, 0, 0, 0};
     SDL_Rect DestR = {0, 0, 0, 0};
 
     SDL_Texture* image;
-    image = text_renderer.RenderText("CHOOSE NUMBER OF PLAYERS", color, renderer);
+    image = text_renderer.RenderText("CHOOSE GAME MODE:", color, renderer);
     SDL_QueryTexture(image, NULL, NULL, &(SrcR.w), &(SrcR.h));
     DestR.x = windowWidth/2 -  SrcR.w/2;
     DestR.y = windowHeight/2 - SrcR.h/2 - SrcR.h;
@@ -32,17 +32,17 @@ PlayersNumber::PlayersNumber(SDL_Renderer* renderer, int windowWidth, int window
     d_textures_draw_src.push_back(SrcR);
     d_textures_draw_dest.push_back(DestR);
 
-    image = text_renderer.RenderText("One Player", color, renderer);
+    image = text_renderer.RenderText("Single", color, renderer);
     SDL_QueryTexture(image, NULL, NULL, &(SrcR.w), &(SrcR.h));
-    DestR.x = windowWidth/2 -  SrcR.w/2;
-    DestR.y += SrcR.h;
+    DestR.x = windowWidth/2 -  SrcR.w/2 - 50;
+    DestR.y += SrcR.h + 20;
     DestR.h = SrcR.h;
     DestR.w = SrcR.w;
     d_textures.push_back(image);
     d_textures_draw_src.push_back(SrcR);
     d_textures_draw_dest.push_back(DestR);
 
-    image = text_renderer.RenderText("Two Players", color, renderer);
+    image = text_renderer.RenderText("Local CO-OP", color, renderer);
     SDL_QueryTexture(image, NULL, NULL, &(SrcR.w), &(SrcR.h));
     DestR.y += SrcR.h;
     DestR.h = SrcR.h;

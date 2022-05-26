@@ -7,7 +7,7 @@
 using namespace std;
 
 bool Game::loadImage(void) {
-    string path = "resources\\menu.png";
+    string path = "resources\\textures.bmp";
     SDL_Surface* loadedSF = IMG_Load(path.c_str());
     if(loadedSF == nullptr) {
         cout << "Unable to load image " << path << " SDL_image: Error: " << IMG_GetError() << "\n";

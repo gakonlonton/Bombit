@@ -37,10 +37,10 @@ void EnemyOne::Draw(SDL_Renderer *renderer) {
 
 EnemyTwo::EnemyTwo(SDL_Texture* tex, int tile_size, int val_x, int val_y) : Enemy(tex, tile_size, val_x, val_y) {
     m_speed = 74;
-    m_move_speed = m_move_speed * m_tile_size/32;
+    m_move_speed = m_move_speed * m_tile_size/18;
     m_rotation_const = TEXTURE_ENEMY_TWO_COUNT;
-    m_enemy_size_w = TEXTURE_ENEMY_TWO_SIZE_W * tile_size/32;
-    m_enemy_size_h = TEXTURE_ENEMY_TWO_SIZE_H * tile_size/32;
+    m_enemy_size_w = TEXTURE_ENEMY_TWO_SIZE_W * tile_size/27;
+    m_enemy_size_h = TEXTURE_ENEMY_TWO_SIZE_H * tile_size/27;
 }
 
 void EnemyTwo::Draw(SDL_Renderer *renderer) {
@@ -129,7 +129,6 @@ void EnemyThree::Update(Relay *relay) {
     else {
         int type = 0;
         if(m_walk_len <= 0) {
-
             m_walk_len = rand()%5 + 10;
             type = rand()%4;
             switch(type) {
@@ -157,7 +156,7 @@ void EnemyThree::Update(Relay *relay) {
     }
 }
 
-void EnemyThree::ChasePlayer(Player * player, Relay *relay) {
+void EnemyThree::ChasePlayer(Player* player, Relay *relay) {
     int i = 1, j = 1;
     Direction direction1 = LEFT, direction2;
 
@@ -185,7 +184,7 @@ void EnemyThree::ChasePlayer(Player * player, Relay *relay) {
 }
 
 bool EnemyThree::DirectionCheck(Direction d, Relay *relay) {
-    int field_size = m_tile_size;
+    unsigned int field_size = m_tile_size;
     if(d == RIGHT) {
         if(relay->GetMap()->Walkable(m_y/field_size, (m_x + m_enemy_size_w + m_move_speed)/field_size)
            and relay->GetMap()->Walkable((m_y + m_enemy_size_h)/field_size, (m_x + m_enemy_size_w + m_move_speed)/field_size)) {

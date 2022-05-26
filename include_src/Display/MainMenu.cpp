@@ -24,7 +24,7 @@ MainMenu::MainMenu(SDL_Texture* texture, SDL_Renderer* renderer, int windowWidth
     string path_font = RESOURCE_BASE + RESOURCE_FONT;
     TextRenderer text_renderer(path_font, 64);
 
-    SDL_Color color = {255, 255, 240, 0};
+    SDL_Color color = {131, 238, 255, 0};
     SDL_Rect SrcR = {0, 0, 0, 0};
     SDL_Rect DestR = {0, 0, 0, 0};
     SDL_Texture* image;

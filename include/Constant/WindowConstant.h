@@ -1,7 +1,7 @@
 #ifndef WINDOW_CONSTANT_H
 #define WINDOW_CONSTANT_H
 
-const int MAP_TILE_SIZE = 44;
+const int MAP_TILE_SIZE = 46;
 const int MAP_ROW_COUNT = 15;
 const int MAP_COL_COUNT = 25;
 
