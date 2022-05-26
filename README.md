@@ -19,7 +19,10 @@ Một dự án nhỏ cho bài tập lớn khóa học Lập trình nâng cao.
 
 _Demo_
 
-
+- [Video Demo](https://youtu.be/ZGt3GjvbOgk)
+- ![Menu](https://user-images.githubusercontent.com/91715559/170541441-102285aa-5e1c-40a3-b568-0bcfa2f26810.png)
+- ![Game Mode](https://user-images.githubusercontent.com/91715559/170541797-7a466ced-0875-4664-a18c-782551138bfa.png)
+- ![Gameplay](https://user-images.githubusercontent.com/91715559/170542480-01608008-92e8-48bd-a85f-f5a350666a10.png)
 
 ## Các kĩ thuật đã sử dụng
 - Sử dụng các thư viện đồ họa SDL2: SDL_image, SDL_mixer, SDL_ttf,...
